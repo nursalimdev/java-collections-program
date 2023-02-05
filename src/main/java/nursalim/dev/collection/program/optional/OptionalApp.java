@@ -37,4 +37,42 @@ public class OptionalApp {
 //            nameUpper = "";
 //        }
     }
+
+    public void nestedIfChecking(Customer customer){
+        String country = Optional.ofNullable(customer.getAddress())
+                .map(address -> address.getCountry())
+                .orElse("Indonesia");
+
+//        old way
+//        String country = "Indonesia";
+//        if(customer.getAddress() != null){
+//            if(customer.getAddress().getCountry() != null){
+//                country = customer.getAddress().getCountry();
+//            }
+//        }
+    }
+
+    public void checkAndThrowException(Customer customer){
+        String name = Optional.ofNullable(customer.getName())
+                .orElseThrow(() -> new IllegalArgumentException("Name can not null"));
+
+//        old way
+//        String name = customer.getName();
+//        if(name == null){
+//            throw new IllegalArgumentException("Name can not null");
+//        }
+    }
+
+    public void ifCheckDoSomething(Customer customer){
+        Optional.ofNullable(customer.getAddress())
+                .map(address -> address.getCountry())
+                .ifPresent(country -> System.out.println(country));
+
+//        old way
+        if(customer.getAddress() != null){
+            if(customer.getAddress().getCountry() != null){
+                System.out.println(customer.getAddress().getCountry());
+            }
+        }
+    }
 }
