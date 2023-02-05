@@ -16,9 +16,25 @@ public class OptionalApp {
     }
 
     public void ifLogic(CustomerRepository repository){
-        Customer customer = repository.findById("id");
-        if(customer == null){
-            repository.createNew();
-        }
+        Customer findById = Optional.ofNullable(repository.findById("id")).orElseGet(() -> repository.createNew());
+//        old way
+//        Customer customer = repository.findById("id");
+//        if(customer == null){
+//            customer = repository.createNew();
+//        }
+    }
+
+    public void operationToNullValue(Customer customer){
+        String nameUpper = Optional.ofNullable(customer.getName())
+                .map(name -> name.toUpperCase())
+                .orElse("");
+
+//        old way
+//        String nameUpper = customer.getName();
+//        if(nameUpper != null){
+//            nameUpper = nameUpper.toUpperCase();
+//        }else{
+//            nameUpper = "";
+//        }
     }
 }
