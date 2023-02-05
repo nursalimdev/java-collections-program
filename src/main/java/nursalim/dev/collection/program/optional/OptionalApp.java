@@ -91,5 +91,24 @@ public class OptionalApp {
 //        }
     }
 
+    public void ifFilter(Customer customer){
+        Long bonus = Optional.of(customer)
+                .filter(value -> CustomerType.PREMIUM.equals(value.getType()))
+                .map(value2 -> value2.getWallet())
+                .map(wallet -> wallet.getBalance())
+                .map(balance -> balance.getCashBalance())
+                .map(cashBalance -> cashBalance * 10/100)
+                .orElse(0L);
+
+        // Long bonus = 0L;
+        if(CustomerType.PREMIUM.equals(customer.getType())){
+            if(customer.getWallet() != null){
+                if(customer.getWallet().getBalance() != null){
+                    bonus = customer.getWallet().getBalance().getCashBalance() * 10/100;
+                }
+            }
+        }
+    }
+
 
 }

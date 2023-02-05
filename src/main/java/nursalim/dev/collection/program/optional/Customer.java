@@ -4,6 +4,7 @@ public class Customer {
     private String name;
     private Address address;
     private Wallet wallet;
+    private CustomerType type;
 
     public String getName() {
         return name;
@@ -27,5 +28,13 @@ public class Customer {
 
     public void setWallet(Wallet wallet) {
         this.wallet = wallet;
+    }
+
+    public CustomerType getType() {
+        return type;
+    }
+
+    public void setType(CustomerType type) {
+        this.type = type;
     }
 }
