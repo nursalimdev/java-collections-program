@@ -69,10 +69,27 @@ public class OptionalApp {
                 .ifPresent(country -> System.out.println(country));
 
 //        old way
-        if(customer.getAddress() != null){
-            if(customer.getAddress().getCountry() != null){
-                System.out.println(customer.getAddress().getCountry());
-            }
-        }
+//        if(customer.getAddress() != null){
+//            if(customer.getAddress().getCountry() != null){
+//                System.out.println(customer.getAddress().getCountry());
+//            }
+//        }
     }
+
+    public void nestedObject(Customer customer){
+        Long cashBalance = Optional.ofNullable(customer.getWallet())
+                .map(wallet -> wallet.getBalance())
+                .map(balance -> balance.getCashBalance())
+                .orElse(0L);
+
+//        old way
+//        Long cashBalance = 0L;
+//        if(customer.getWallet() != null){
+//            if(customer.getWallet().getBalance() != null){
+//                cashBalance = customer.getWallet().getBalance().getCashBalance();
+//            }
+//        }
+    }
+
+
 }

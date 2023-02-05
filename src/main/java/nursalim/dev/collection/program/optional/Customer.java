@@ -3,6 +3,7 @@ package nursalim.dev.collection.program.optional;
 public class Customer {
     private String name;
     private Address address;
+    private Wallet wallet;
 
     public String getName() {
         return name;
@@ -18,5 +19,13 @@ public class Customer {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
     }
 }
